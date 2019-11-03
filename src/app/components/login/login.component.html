@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="card bg-light">
+        <article class="card-body mx-auto">
+            <h4 class="card-title mt-3 text-center">Log In</h4>
+            <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <div *ngIf="email.errors.required">
+                            <span class="text-danger danger-message">Must have an email.</span>
+                        </div>
+                        <div *ngIf="email.errors.notEmail">
+                            <span class="text-danger danger-message">Must be an email.</span>
+                        </div>
+                        <div *ngIf="email.errors.emailNotExist">
+                            <span class="text-danger danger-message">This email doesn't exist.</span>
+                        </div>
+                    </div>
+                </div> <!-- form-group// -->
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <div *ngIf="password.errors.required">
+                            <span class="text-danger danger-message">Must have a password.</span>
+                        </div>
+                    </div>
+                </div> <!-- form-group// -->
+                <!-- <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input type="password" class="form-control" formControlName="password" placeholder="Repeat Password">
+                </div>  -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="logInForm.invalid"> Login</button>
+                </div> <!-- form-group// -->
+                <p class="text-center">Don't have an account? <button class="btn btn-secondary" (click) ="goToSignUp()">Sign Up</button> </p>
+            </form>
+        </article>
+    </div> <!-- card.// -->
+
+</div>

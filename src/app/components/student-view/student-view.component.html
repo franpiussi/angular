@@ -1,0 +1,44 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">View Student</h1>
+        <p class="lead">This is the information of a student</p>
+    </div>
+</div>
+<div class="container">
+    <form class="pb-3">
+        <div class="form-group">
+            <label for="inputFirstName">First name</label>
+            <input type="text" class="form-control" [(ngModel)]="student.firstName" name="firstName"
+                contenteditable="true">
+        </div>
+        <div class="form-group">
+            <label for="inputLastName">Last name</label>
+            <input type="text" class="form-control" [(ngModel)]="student.lastName" name="lastName"
+                contenteditable="true">
+        </div>
+        <div class="form-group">
+            <label for="inputDni">DNI</label>
+            <input type="number" class="form-control" [(ngModel)]="student.dni" name="dni" contenteditable="true"
+                min="1">
+        </div>
+        <div class="form-group">
+            <label for="inputDni">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="student.email" name="email" contenteditable="true">
+        </div>
+        <div class="form-group">
+            <label for="inputAddress">Address</label>
+            <input type="text" class="form-control" [(ngModel)]="student.address" name="address" contenteditable="true">
+        </div>
+        <div class="form-group">
+            <label for="selectCareer">Career</label>
+            <select class="form-control" [(ngModel)]="student.careerId" name="careerId">
+                <option value="">Choose an Option</option>
+                <option *ngFor="let career of careers" [value]="career.careerId">{{career.name}}</option>
+            </select>
+        </div>
+        <div>
+            <button class="btn btn-success" style="float:right" (click)="editStudent()">Save</button>
+            <button class="btn btn-secondary" [routerLink]="['../..']">Back To List</button>
+        </div>
+    </form>
+</div>
