@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
     this.user = <User> this.logInForm.value
     this.loginService.login(this.user)
     .subscribe(
-      response => {
-        this.loginService.token = response['jwt'];
-        console.log(this.loginService.token);
+      () => {
         if(this.loginService.token){
           let redirect = this.loginService.redirectUrl ? this.route.parseUrl(this.loginService.redirectUrl) : '/home'
           this.route.navigateByUrl(redirect)

@@ -17,7 +17,14 @@ export class LoginService {
 
   login(user : User): Observable<any> {
     let body = JSON.stringify(user)
-    return this.http.post('https://utn2019-avanzada2-tp8.herokuapp.com/login',body,headers)
+    const observable = this.http.post('https://utn2019-avanzada2-tp8.herokuapp.com/login',body,headers)
+
+    observable.subscribe(response => {
+      this.token = response['jwt'];
+      localStorage.setItem('token', this.token);
+    },
+    error => {console.log("error login")})
+    return observable
   }
 
   checkEmailNotTaken(email : string) : Observable<any> {

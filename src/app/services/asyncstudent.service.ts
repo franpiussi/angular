@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Student } from '../models/student';
 import { Observable } from 'rxjs';
 
-const headers = { headers: new HttpHeaders({ 'Content-Type': 'Application/json' }) }
+const headers = { headers: new HttpHeaders({ 'Content-Type': 'Application/json'}) }
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AsyncstudentService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get('https://utn2019-avanzada2-tp8.herokuapp.com/api/students')
+      return this.http.get('https://utn2019-avanzada2-tp8.herokuapp.com/api/students')
   }
 
   getById(studentId): Observable<any> {
